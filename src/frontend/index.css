@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono[wght].woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Casino dark theme - near-black with gold/amber accents */
+    --background: 0.11 0.008 260;
+    --foreground: 0.95 0.01 90;
+
+    --card: 0.14 0.01 260;
+    --card-foreground: 0.95 0.01 90;
+
+    --popover: 0.16 0.012 260;
+    --popover-foreground: 0.95 0.01 90;
+
+    /* Gold primary */
+    --primary: 0.78 0.16 68;
+    --primary-foreground: 0.12 0.01 260;
+
+    --secondary: 0.18 0.015 260;
+    --secondary-foreground: 0.85 0.01 90;
+
+    --muted: 0.2 0.01 260;
+    --muted-foreground: 0.55 0.02 260;
+
+    --accent: 0.22 0.018 260;
+    --accent-foreground: 0.9 0.01 90;
+
+    /* Red for destructive/mines */
+    --destructive: 0.62 0.22 28;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.25 0.015 260;
+    --input: 0.2 0.012 260;
+    --ring: 0.78 0.16 68;
+
+    /* Mine red */
+    --mine: 0.58 0.22 28;
+    --mine-foreground: 0.98 0 0;
+    --mine-glow: 0.7 0.2 28;
+
+    /* Safe green */
+    --safe: 0.62 0.18 148;
+    --safe-foreground: 0.1 0.02 148;
+    --safe-glow: 0.72 0.2 148;
+
+    /* Gold accent */
+    --gold: 0.78 0.16 68;
+    --gold-dim: 0.55 0.12 68;
+    --gold-bright: 0.88 0.18 68;
+
+    --chart-1: 0.78 0.16 68;
+    --chart-2: 0.62 0.18 148;
+    --chart-3: 0.58 0.22 28;
+    --chart-4: 0.62 0.22 270;
+    --chart-5: 0.65 0.2 200;
+
+    --sidebar: 0.13 0.01 260;
+    --sidebar-foreground: 0.95 0.01 90;
+    --sidebar-primary: 0.78 0.16 68;
+    --sidebar-primary-foreground: 0.12 0.01 260;
+    --sidebar-accent: 0.18 0.015 260;
+    --sidebar-accent-foreground: 0.85 0.01 90;
+    --sidebar-border: 0.22 0.012 260;
+    --sidebar-ring: 0.78 0.16 68;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Cabinet Grotesk", sans-serif;
+    font-feature-settings: "ss01", "ss02";
+  }
+
+  html {
+    color-scheme: dark;
+  }
+}
+
+@layer utilities {
+  .font-mono-code {
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 20px oklch(var(--gold) / 0.3), 0 0 40px oklch(var(--gold) / 0.1);
+  }
+
+  .glow-mine {
+    box-shadow: 0 0 16px oklch(var(--mine-glow) / 0.6), 0 0 32px oklch(var(--mine-glow) / 0.3), inset 0 0 12px oklch(var(--mine-glow) / 0.15);
+  }
+
+  .glow-safe {
+    box-shadow: 0 0 16px oklch(var(--safe-glow) / 0.5), 0 0 28px oklch(var(--safe-glow) / 0.2), inset 0 0 10px oklch(var(--safe-glow) / 0.1);
+  }
+
+  .glass-card {
+    background: oklch(var(--card) / 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid oklch(var(--border) / 0.6);
+  }
+
+  .gold-border {
+    border-color: oklch(var(--gold) / 0.4);
+  }
+
+  .text-gold {
+    color: oklch(var(--gold));
+  }
+
+  .text-gold-dim {
+    color: oklch(var(--gold-dim));
+  }
+
+  .bg-mine-tile {
+    background: oklch(var(--mine) / 0.15);
+    border-color: oklch(var(--mine) / 0.5);
+  }
+
+  .bg-safe-tile {
+    background: oklch(var(--safe) / 0.12);
+    border-color: oklch(var(--safe) / 0.4);
+  }
+
+  .grid-bg {
+    background-image:
+      radial-gradient(circle at 20% 20%, oklch(var(--gold) / 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, oklch(var(--safe) / 0.03) 0%, transparent 50%);
+  }
+}
